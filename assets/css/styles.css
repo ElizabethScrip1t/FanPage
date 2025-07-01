@@ -1,0 +1,251 @@
+/* RESET 8-BIT */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+  }
+  
+  /* FUENTES RETRO */
+  @font-face {
+    font-family: '8-bit';
+    src: url('https://fonts.cdnfonts.com/css/8-bit-pusab') format('woff');
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  
+  /* PALETA DE COLORES RETRO */
+  :root {
+    --black: #000000;
+    --dark-purple: #1A1A3D;
+    --purple: #5A2D82;
+    --pink: #FF00FF;
+    --red: #FF0000;
+    --orange: #FF7F00;
+    --yellow: #FFFF00;
+    --green: #00FF00;
+    --blue: #00FFFF;
+    --white: #FFFFFF;
+  }
+  
+  /* ESTILOS BASE 8-BIT */
+  body {
+    background-color: var(--dark-purple);
+    background-image: 
+      linear-gradient(var(--purple) 2px, transparent 2px),
+      linear-gradient(90deg, var(--purple) 2px, transparent 2px);
+    background-size: 40px 40px;
+    font-family: 'Press Start 2P', cursive;
+    color: var(--white);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  /* HEADER ESTILO ARCADE */
+  .main-header {
+    background: var(--black);
+    border: 8px solid var(--yellow);
+    padding: 1.5rem;
+    text-align: center;
+    margin: 20px;
+    position: relative;
+    box-shadow: 0 0 0 8px var(--red),
+                0 0 0 16px var(--blue);
+  }
+  
+  .main-header h1 {
+    font-family: '8-bit', cursive;
+    font-size: 3rem;
+    color: var(--yellow);
+    text-shadow: 5px 5px 0 var(--red),
+                 8px 8px 0 var(--pink);
+    letter-spacing: 2px;
+    animation: glitch 1s linear infinite;
+  }
+  
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+  }
+  
+  /* NAVEGACIÓN ESTILO MENÚ ARCADE */
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  
+  nav a {
+    font-family: '8-bit', cursive;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border: 4px solid var(--green);
+    background: var(--black);
+    position: relative;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  
+  nav a:hover {
+    background: var(--green);
+    color: var(--black);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--green);
+  }
+  
+  nav a::before {
+    content: '▶';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  
+  nav a:hover::before {
+    left: -15px;
+    opacity: 1;
+    color: var(--yellow);
+  }
+  
+  /* TARJETAS DE JUEGO ESTILO NES */
+  .juego {
+    background: var(--black);
+    border: 6px solid var(--white);
+    margin: 2rem auto;
+    padding: 1.5rem;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 8px 8px 0 var(--red);
+  }
+  
+  .juego::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+  }
+  
+  .juego h2 {
+    color: var(--yellow);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--blue);
+    padding-bottom: 0.5rem;
+  }
+  
+  .juego img {
+    border: 4px solid var(--orange);
+    margin: 1rem 0;
+    max-width: 100%;
+    filter: contrast(1.2) brightness(0.9);
+  }
+  
+  .rating {
+    color: var(--yellow);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  
+  /* LISTA TOP ESTILO MENÚ DE JUEGO */
+  .top-list {
+    background: var(--black);
+    border: 4px solid var(--pink);
+    padding: 1.5rem;
+    margin: 2rem;
+    list-style-type: none;
+  }
+  
+  .top-list li {
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background: rgba(90, 45, 130, 0.3);
+    counter-increment: item;
+    position: relative;
+    padding-left: 3rem;
+  }
+  
+  .top-list li::before {
+    content: counter(item);
+    position: absolute;
+    left: 0.5rem;
+    color: var(--orange);
+  }
+  
+  /* FOOTER ESTILO GAME OVER */
+  footer {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 8px solid var(--red);
+    position: relative;
+  }
+  
+  footer::before {
+    content: 'GAME OVER';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--red);
+    color: var(--black);
+    padding: 0 1rem;
+    font-family: '8-bit', cursive;
+    font-size: 1.2rem;
+  }
+  
+  /* EFECTOS ESPECIALES */
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      rgba(0, 0, 0, 0) 50%,
+      rgba(255, 255, 255, 0.05) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .main-header h1 {
+      font-size: 2rem;
+    }
+    
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .juego {
+      margin: 1rem;
+    }
+  }
